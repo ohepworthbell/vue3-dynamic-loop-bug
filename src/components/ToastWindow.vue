@@ -10,17 +10,16 @@
 
 <script>
 import ToastMessage from "./ToastMessage.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "ToastWindow",
   components: {
     ToastMessage,
   },
-  computed: mapState(["toasts"]),
+  props: ["toasts"],
   methods: {
     removeToast(index) {
-      this.$store.dispatch("endToast", index);
+      this.$emit("remove-toast", index);
     },
   },
 };

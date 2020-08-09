@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ToastWindow />
+    <ToastWindow :toasts="toasts" @remove-toast="removeToast" />
   </div>
 </template>
 
@@ -11,6 +11,29 @@ export default {
   name: "App",
   components: {
     ToastWindow,
+  },
+  data() {
+    return {
+      toasts: [
+        {
+          content: "This is a toast...",
+        },
+        {
+          content: "Toast with timeout",
+        },
+        {
+          content: "Another toast...",
+        },
+        {
+          content: "And yet another",
+        },
+      ],
+    };
+  },
+  methods: {
+    removeToast(index) {
+      this.toasts.splice(index, 1);
+    },
   },
 };
 </script>
